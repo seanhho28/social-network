@@ -1,0 +1,766 @@
+/*
+	Sean Ho
+	COMP 296 - Advanced Software Project
+	Social Network
+*/
+
+/*
+	==================== GLOBAL ====================
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+table, tbody, tr, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+	background-color: #f6f6f6;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 12px;
+}
+
+h1, h2, h3, h4 {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #333;
+}
+
+a:active {
+	color: #333;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.wrapper {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+#main-wrapper {
+	padding-top: 62px;
+}
+
+input[type="text"],
+input[type="password"] {
+	margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+	vertical-align: middle;
+	position: relative;
+	bottom: 1px;
+}
+
+select {
+	margin-bottom: 5px;
+}
+
+input[type="radio"] {
+	vertical-align: middle;
+	position: relative;
+	bottom: 1px;
+	margin: 0 10px 5px 5px;
+}
+
+input[type="submit"] {
+	font-size: 12px;
+	font-weight: 700;
+	margin: 10px 0;
+	padding: 2px 4px;
+}
+
+label.textfield {
+	margin-right: 5px;
+}
+
+label.checkbox {
+	font-size: 11px;
+}
+
+/*
+	==================== TOPBAR ====================
+*/
+
+#topbar {
+	background: #383838;
+	position: fixed;
+	height: 62px;
+	width: 100%;
+	top: 0;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+/*
+	===== LOGO =====
+*/
+
+#topbar-logo {
+	float: left;
+	margin: 13px 0;
+}
+
+#topbar-logo:hover {
+	background: #eee;
+}
+
+#topbar-logo a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 36px;
+	padding: 0 15px;
+}
+
+#topbar-logo a:hover {
+	color: #333;
+}
+
+/*
+	===== LOGIN =====
+*/
+
+#topbar-login {
+	float: right;
+	margin: 6px 15px;
+}
+
+#topbar-login input[type="text"],
+#topbar-login input[type="password"] {
+	font-size: 11px;
+	height: 13px;
+	width: 125px;
+	margin-right: 5px;
+	margin-bottom: 3px;
+}
+
+#topbar-login input[type="checkbox"] {
+	vertical-align: middle;
+	position: relative;
+	bottom: 1px
+}
+
+#topbar-login input[type="submit"] {
+	font-size: 11px;
+	font-weight: 700;
+	margin: 0;
+	padding: 2px 4px;
+}
+
+#topbar-login label.textfield {
+	color: #fff;
+	font-size: 11px;
+}
+
+#topbar-login label.checkbox {
+	color: #b0b0b0;
+	font-size: 10px;
+}
+
+/*
+	===== NAV =====
+*/
+
+#topbar-nav {
+	float: right;
+	margin: auto 0;
+}
+
+#topbar-nav ul {
+	list-style: none;
+	position: relative;
+	float: left;
+	margin: 15px 0;
+	padding: 0;
+}
+
+#topbar-nav ul li {
+	position: relative;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#topbar-nav ul li:hover {
+	background: #eee;
+}
+
+#topbar-nav ul li:hover > a {
+	color: #333;
+}
+
+#topbar-nav ul li:hover > ul {
+	display: block;
+}
+
+#topbar-nav ul li:hover > ul a {
+	color: #333;
+}
+
+#topbar-nav ul a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 32px;
+	padding: 0 15px;
+	font-family: helvetica, arial, sans-serif;
+}
+
+
+#topbar-nav ul a:hover {
+	color: #333;
+}
+
+#topbar-nav ul ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+
+#topbar-nav ul ul li {
+	float: none;
+	width: 150px;
+}
+
+#topbar-nav ul ul a {
+	line-height: 120%;
+	padding: 10px 15px;
+}
+
+/*
+	==================== CONTENT ====================
+*/
+
+/*
+	===== CENTER CONTAINER =====
+*/
+
+#center-container {
+	background-color: #fff;
+	margin: 100px 200px;
+	padding: 25px;
+	border: 1px solid #b7b7b7;
+}
+
+#center-container h2.title {
+	color: #333;
+	margin-bottom: 25px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+#center-container table {
+	margin: 0 auto;
+}
+
+#center-container a.tiny-link {
+	text-decoration: none;
+	font-size: 11px;
+}
+
+/*
+	===== MAIN CONTAINER =====
+*/
+
+#main-container {
+	float: left;
+	padding: 25px;
+	margin-bottom: 50px;
+}
+
+#main-container.page {
+	min-height: 600px;
+	width: 774px;
+	background: #fff;
+	border: 1px solid #b7b7b7;
+	border-top: 0;
+}
+
+#main-container.profile {
+	width: 826px;
+	padding: 20px 0;
+}
+
+#main-container h1.profile {
+	margin-top: 5px;
+	color: #333;
+}
+
+#main-container h2.title {
+	color: #333;
+	margin-bottom: 25px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+#main-container h3.subtitle {
+	color: #333;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+#main-container h4.name {
+	color: #333;
+	margin-bottom: 5px;
+}
+
+#main-container textarea {
+	resize: none;
+	height: 110px;
+	width: 350px;
+}
+
+/*
+	===== FRIENDS CONTAINER =====
+*/
+
+#main-container.friends #all-friends {
+	float: left;
+}
+
+#main-container.friends #all-friends .friend {
+	float: left;
+	margin: 0 6px;
+}
+
+#main-container.friends #all-friends .friend .friend-picture {
+	height: 123px;
+	width: 123px;
+	border: 1px solid #b7b7b7;
+	overflow: hidden;
+}
+
+#main-container.friends #all-friends .friend .friend-picture img {
+	max-height: auto;
+	max-width: 100%;
+}
+
+#main-container.friends #all-friends .friend span.name {
+	display: block;
+	max-width: 125px;
+	max-height: 14px;
+	margin: 5px 0 15px 0;
+	font-weight: 700;
+	text-align: center;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+/*
+	===== PAGE =====
+*/
+
+#main-container.page #friends {
+	width: 685px;
+}
+
+#main-container.page #picture { /* Profile picture on update page */
+	max-height: 255px;
+	max-width: 255px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+#main-container.page #picture img { /* Profile picture on update page */
+	max-height: auto;
+	max-width: 100%;
+}
+
+#main-container.page input[type="text"] {
+	margin-right: 5px;
+}
+
+/*
+	===== PROFILE =====
+*/
+
+#main-container.profile .panel {
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #b7b7b7;
+}
+
+#main-container.profile #picture {
+	float: left;
+	height: 255px;
+	width: 255px;
+	padding: 0;
+	overflow: hidden;
+}
+
+#main-container.profile #picture img {
+	max-height: auto;
+	max-width: 100%;
+}
+
+#main-container.profile #info-box {
+	float: left;
+}
+
+#main-container.profile #friend-buttons {
+	height: 62px;
+	width: 545px;
+	margin: 0 0 20px 20px;
+}
+
+#main-container.profile #friend-buttons input[type="submit"] {
+	margin: 0;
+	margin-top: 40px;
+}
+
+#main-container.profile #info {
+	height: 143px;
+	width: 517px;
+	margin-left: 20px;
+}
+
+#main-container.profile #info #more-info {
+	max-height: 100px;
+	width: 517px;
+	margin-top: 10px;
+}
+
+#main-container.profile #left-column {
+	float: left;
+}
+
+#main-container.profile #about {
+	width: 225px;
+	margin: 20px 0;
+}
+
+#main-container.profile #about p.about {
+	margin-bottom: 5px;
+	word-break: break-all;
+}
+
+#main-container.profile #about span.about {
+	font-weight: 700;
+}
+
+#main-container.profile #friends {
+	float: left;
+	width: 225px;
+}
+
+#main-container.profile #friends .friend {
+	float: left;
+	margin: 0 3px;
+}
+
+#main-container.profile #friends .friend .friend-picture {
+	height: 67px;
+	width: 67px;
+	border: 1px solid #b7b7b7;
+	overflow: hidden;
+}
+
+#main-container.profile #friends .friend .friend-picture img {
+	max-height: auto;
+	max-width: 100%;
+}
+
+#main-container.profile #friends .friend span.name {
+	display: block;
+	max-width: 67px;
+	max-height: 14px;
+	margin: 3px 0 6px 0;
+	font-weight: 700;
+	text-align: center;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+#main-container.profile #friends .view-all {
+	clear: both;
+	font-weight: 700;
+	text-align: center;
+}
+
+#main-container.profile #main {
+	float: left;
+}
+
+#main-container.profile #post {
+	width: 515px;
+	margin: 20px 0 20px 20px;
+}
+
+#main-container.profile #post input[type='submit'] {
+	margin-bottom: 0;
+}
+
+#main-container.profile #post textarea {
+	resize: none;
+	height: 75px;
+	width: 513px;
+}
+
+#main-container.profile #comments {
+	width: 515px;
+	margin-left: 20px;
+}
+
+#main-container.profile #comments .comment {
+	height: 52px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+#main-container.profile #comments .comment .picture {
+	float: left;
+	height: 50px;
+	width: 50px;
+	border: 1px solid #b7b7b7;
+	overflow: hidden;
+}
+
+#main-container.profile #comments .comment .picture img {
+	max-height: auto;
+	max-width: 100%;
+}
+
+#main-container.profile #comments .comment .message-box {
+	float: left;
+	width: 453px;
+	margin-left: 10px;
+}
+
+.comment p.message {
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+.comment p.timestamp {
+	clear: both;
+	color: #a0a0a0;
+	font-size: 11px;
+}
+
+/*
+	===== SIDEBAR =====
+*/
+
+#sidebar {
+	width: 134px;
+	margin-top: 32px;
+}
+
+/*
+	===== LEFT =====
+*/
+
+#sidebar.left {
+	float: left;
+}
+
+#sidebar.left ul {
+	list-style: none;
+	padding: 0;
+}
+
+#sidebar.left ul li:hover {
+	background: #eee;
+}
+
+#sidebar.left ul li.selected-option {
+	background: #eee;
+}
+
+#sidebar.left ul a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 32px;
+	padding: 0 15px;
+	font-family: helvetica, arial, sans-serif;
+}
+
+/*
+	===== RIGHT =====
+*/
+
+#sidebar.right {
+	float: right;
+	margin-top: 102px;
+}
+
+#sidebar.right ul {
+	list-style: none;
+	padding: 0;
+}
+
+#sidebar.right ul li:hover {
+	background: #eee;
+}
+
+#sidebar.right ul li.selected-option {
+	background: #eee;
+}
+
+#sidebar.right ul a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 32px;
+	padding: 0 15px;
+	font-family: helvetica, arial, sans-serif;
+}
+
+#sidebar.right input[type="submit"] {
+	margin: 0 0 5px 10px;
+}
+
+/*
+	===== ALERTS =====
+*/
+
+#alert-container {
+	padding: 10px;
+}
+
+#alert-container.page {
+	margin-bottom: 20px;
+}
+
+#alert-container.profile {
+	margin-top: 20px;
+}
+
+#alert-container.success {
+	background: #ccebcc;
+	border: 1px solid #004000;
+}
+
+#alert-container.error {
+	background: #ffe6e6;
+	border: 1px solid #cc0000;
+}
+
+#alert-container.notice {
+	background: #e0f0ff;
+	border: 1px solid #000099;
+}
+
+#alert-container h3 {
+	color: #333;
+	margin-bottom: 10px;
+}
+
+/*
+	===== NOTIFICATIONS =====
+*/
+
+.notification {
+	height: 52px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+.notification .picture {
+	float: left;
+	height: 50px;
+	width: 50px;
+	border: 1px solid #b7b7b7;
+	overflow: hidden;
+}
+
+.notification .picture img {
+	max-height: auto;
+	max-width: 100%;
+}
+
+.notification .message {
+	float: left;
+	margin-left: 10px;
+}
+
+.notification .message p.message {
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+.notification .message span.name {
+	font-weight: 700;
+}
+
+.notification .message p.timestamp {
+	color: #a0a0a0;
+	font-size: 11px;
+}
+
+/*
+	===== FRIEND REQUESTS =====
+*/
+
+.friend-request {
+	height: 69px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+.friend-request .picture {
+	float: left;
+	height: 67px;
+	width: 67px;
+	border: 1px solid #b7b7b7;
+	overflow: hidden;
+}
+
+.friend-request .picture img {
+	max-height: auto;
+	max-width: 100%;
+}
+
+.friend-request .buttons {
+	float: left;
+	margin-left: 10px;
+}
+
+.friend-request input[type="submit"] {
+	margin-top: 5px;
+}
+
+.friend-request h3.name {
+	color: #333;
+}
